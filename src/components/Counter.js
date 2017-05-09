@@ -1,26 +1,32 @@
 
-import React, { PropTypes } from 'react';
+import React, { Component, PropTypes } from 'react';
 import * as actions from '../actions';
 import { connect } from 'react-redux';
 
 import './Counter.css';
 
-const Counter = ({ number, color, onIncrement, onDecrement, onSetColor }) => (
-  <button
-    className="Counter"
-    onClick={onIncrement}
-    onContextMenu={
-      (e) => {
-        e.preventDefault();
-        onDecrement();
-      }
-    }
-    onDoubleClick={onSetColor}
-    style={{ backgroundColor: color }}
-  >
-    {number}
-  </button>
-);
+class Counter extends Component {
+  onContextMenu(e) {
+    e.preventDefault();
+    this.props.onDecrement();
+  }
+
+  render() {
+    const { number, color, onIncrement, onSetColor } = this.props;
+
+    return (
+      <button
+        className="Counter"
+        onClick={onIncrement}
+        onContextMenu={e => this.onContextMenu(e)}
+        onDoubleClick={onSetColor}
+        style={{ backgroundColor: color }}
+      >
+        {number}
+      </button>
+    );
+  }
+}
 
 Counter.propTypes = {
   number: PropTypes.number,
