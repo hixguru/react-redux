@@ -1,8 +1,11 @@
-
+// MODULE DEPENDENCIES
 import React, { Component, PropTypes } from 'react';
-import * as actions from '../actions';
 import { connect } from 'react-redux';
 
+// ACTIONS
+import * as actions from '../actions';
+
+// STYLE
 import './Counter.css';
 
 class Counter extends Component {
