@@ -19,7 +19,7 @@ class Counter extends Component {
 
     return (
       <button
-        className="Counter"
+        className="counter-container"
         onClick={onIncrement}
         onContextMenu={e => this.onContextMenu(e)}
         onDoubleClick={onSetColor}
